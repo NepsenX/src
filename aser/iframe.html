@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Realtime Theme iFrame</title>
+
+<style>
+    html,   body {
+        overflow-x: hidden;
+        overflow-y: transparent; 
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    iframe {
+        height: 100vh;
+        width: 100vw;
+        border: none;
+    }
+</style>
+</head>
+<body>
+
+<iframe id="frame"></iframe>
+
+<script>
+    const frame = document.getElementById("frame");
+    const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // Function to determine the correct HTML file based on priority
+    function getThemeSrc() {
+        // 1. Check Local Storage first
+        const localTheme = localStorage.getItem("theme");
+        
+        if (localTheme === "dark") {
+            return "dark.html";
+        }
+        if (localTheme === "light") {
+            return "light.html";
+        }
+
+        // 2. Fallback to System Preference if local storage is empty
+        return systemThemeQuery.matches ? "dark.html" : "light.html";
+    }
+
+    function applyTheme() {
+        const newSrc = getThemeSrc();
+        // Only update src if it is different to prevent unnecessary reloads
+        if (frame.getAttribute("src") !== newSrc) {
+            frame.src = newSrc;
+        }
+    }
+
+    // Initial load
+    applyTheme();
+
+    // Listen for System Theme changes (only effective if no local override)
+    systemThemeQuery.addEventListener("change", () => {
+        if (!localStorage.getItem("theme")) {
+            applyTheme();
+        }
+    });
+
+    // Listen for Local Storage changes (e.g., changed in another tab/component)
+    window.addEventListener("storage", (event) => {
+        if (event.key === "theme") {
+            applyTheme();
+        }
+    });
+</script>
+
+</body>
+</html>
