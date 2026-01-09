@@ -148,10 +148,10 @@ html.dark {
 /* Base Card Component */
 .card {
   background-image: url("./card_lbg.webp") !important;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-size: cover !important;
+  background-position: center !important;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 html.dark .card {
@@ -160,13 +160,13 @@ html.dark .card {
 
 /* Cards Container Layout */
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 2rem !important;
+  padding: 2rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
 @media (max-width: 768px) {
@@ -183,4 +183,5 @@ html.dark .card {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
 
