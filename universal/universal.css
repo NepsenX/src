@@ -147,7 +147,7 @@ html.dark {
 }
 /* Base Card Component */
 .card {
-  background-image: var(--card-back-img);
+  background-image: url("./card_lbg.webp") !important;
   background-size: cover;
   background-position: center;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -155,7 +155,7 @@ html.dark {
 }
 
 html.dark .card {
-  background-image: var(--back-card-dark);
+  background-image: url("./card_bg.webp") !important;
 }
 
 /* Cards Container Layout */
@@ -183,3 +183,4 @@ html.dark .card {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
